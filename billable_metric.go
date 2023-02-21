@@ -144,7 +144,9 @@ func (bmr *BillableMetricRequest) Update(ctx context.Context, billableMetricInpu
 	clientRequest := &ClientRequest{
 		Path:   subPath,
 		Result: &BillableMetricResult{},
-		Body:   billableMetricInput,
+		Body: &BillableMetricParams{
+			BillableMetricInput: billableMetricInput,
+		},
 	}
 
 	result, err := bmr.client.Put(ctx, clientRequest)
